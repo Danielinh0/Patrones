@@ -58,7 +58,7 @@ class Tarjeta extends Model
 
     public function getTarifaStrategy(): TarifaStrategyInterface
     {
-        return match ($this->tipo) {
+        return match (strtolower($this->tipo)) {
             'estudiante' => new TarifaEstudianteStrategy() ,
             'adulto_mayor' => new TarifaAdultoMayorStrategy(),
             'turista' => new TarifaTuristaStrategy(),
@@ -68,7 +68,7 @@ class Tarjeta extends Model
 
     public function getEstado() :TarjetaStateInterface
     {
-        return match ($this->estado) {
+        return match (strtolower($this->estado)) {
             'bloqueada' => new BloqueadaTarjetaState(),
             'vencida' => new VencidaTarjetaState(),
             default => new ActivaTarjetaState(),
@@ -83,4 +83,10 @@ class Tarjeta extends Model
     {
         $this->getEstado()->recargar($this,$monto);
     }
+
+    public function getSaldoAttribute()
+    {
+        return $this->saldo_actual;
+    }
 }
+

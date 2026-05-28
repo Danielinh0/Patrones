@@ -125,199 +125,21 @@
     </header>
 
     <main class="flex-grow pt-24 pb-xl px-gutter max-w-container-max mx-auto w-full">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
-            <section class="md:col-span-8">
-                <div class="bg-transit-card rounded-xl p-lg text-white shadow-lg relative overflow-hidden group">
-                    <div class="absolute -right-16 -top-16 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl group-hover:opacity-10 transition-opacity"></div>
-                    <div class="flex flex-col gap-xl">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="font-label-caps text-label-caps text-blue-200 mb-xs">SALDO ACTUAL</p>
-                                <h1 class="font-numeric-display text-[48px] leading-none">$18.50</h1>
-                            </div>
-                            <div class="bg-error-container text-on-error-container px-md py-xs rounded-full flex items-center gap-xs animate-pulse">
-                                <span class="material-symbols-outlined text-[16px]">warning</span>
-                                <span class="font-label-caps text-label-caps">SALDO BAJO</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex flex-col gap-xs">
-                                <p class="font-label-caps text-label-caps text-blue-200">NÚMERO DE TARJETA</p>
-                                <p class="font-body-sm tracking-widest">**** **** **** 4829</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="flex flex-col gap-lg">
+            <!-- Componente del Saldo y Detalles de Tarjeta -->
+            <livewire:tarjeta.saldo />
 
-            <section class="md:col-span-4 flex flex-col gap-md">
-                <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center gap-md">
-                    <div class="bg-primary-fixed p-sm rounded-lg">
-                        <span class="material-symbols-outlined text-primary">directions_bus</span>
-                    </div>
-                    <div>
-                        <p class="font-label-caps text-label-caps text-on-surface-variant">ÚLTIMO VIAJE</p>
-                        <p class="font-headline-md text-headline-md text-primary">Línea 4 - Centro</p>
-                    </div>
-                </div>
-                <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center gap-md">
-                    <div class="bg-secondary-fixed p-sm rounded-lg">
-                        <span class="material-symbols-outlined text-secondary">verified_user</span>
-                    </div>
-                    <div>
-                        <p class="font-label-caps text-label-caps text-on-surface-variant">ESTADO TARJETA</p>
-                        <p class="font-headline-md text-headline-md text-secondary">Activa</p>
-                    </div>
-                </div>
-            </section>
+            <!-- Grid de Botones de Acción (Recarga y Pago) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg my-md">
+                <livewire:tarjeta.botones.recargar />
+                <livewire:tarjeta.botones.pago />
+            </div>
 
-            <section class="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-lg my-md">
-                <button class="bg-primary text-white p-lg rounded-xl flex items-center justify-between group hover:shadow-md transition-all active:scale-[0.98]" onclick="openModal('recharge-modal')">
-                    <div class="flex items-center gap-md">
-                        <span class="material-symbols-outlined text-[32px] bg-primary-container p-md rounded-xl">add_card</span>
-                        <div class="text-left">
-                            <p class="font-headline-md text-headline-md">Recargar Saldo</p>
-                            <p class="font-body-sm text-on-primary-container">Añade fondos a tu cuenta al instante</p>
-                        </div>
-                    </div>
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
-                </button>
-                <button class="bg-white border-2 border-primary text-primary p-lg rounded-xl flex items-center justify-between group hover:bg-surface-container-low transition-all active:scale-[0.98]" onclick="openModal('simulate-modal')">
-                    <div class="flex items-center gap-md">
-                        <span class="material-symbols-outlined text-[32px] bg-surface-container p-md rounded-xl">route</span>
-                        <div class="text-left">
-                            <p class="font-headline-md text-headline-md">Simular Pago de Viaje</p>
-                            <p class="font-body-sm text-on-surface-variant">Calcula el costo de tu próximo trayecto</p>
-                        </div>
-                    </div>
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
-                </button>
-            </section>
-
-            <section class="md:col-span-12">
-                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
-                    <div class="p-lg border-b border-outline-variant flex justify-between items-center">
-                        <h2 class="font-headline-md text-headline-md text-primary">Historial de Transacciones</h2>
-                        <button class="text-primary font-label-caps text-label-caps hover:underline">VER TODO</button>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-surface-container-low">
-                                    <th class="p-md font-label-caps text-label-caps text-on-surface-variant">FECHA</th>
-                                    <th class="p-md font-label-caps text-label-caps text-on-surface-variant">ESTACIÓN / RUTA</th>
-                                    <th class="p-md font-label-caps text-label-caps text-on-surface-variant">TIPO</th>
-                                    <th class="p-md font-label-caps text-label-caps text-on-surface-variant text-right">MONTO</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-outline-variant">
-                                <tr class="hover:bg-surface-container-low transition-colors">
-                                    <td class="p-md text-body-sm">Hoy, 08:45 AM</td>
-                                    <td class="p-md font-medium">Estación Hidalgo - L3</td>
-                                    <td class="p-md"><span class="bg-surface-container-high text-primary px-sm py-xs rounded text-[12px] font-bold">VIAJE</span></td>
-                                    <td class="p-md text-right font-bold text-error">-$6.00</td>
-                                </tr>
-                                <tr class="hover:bg-surface-container-low transition-colors">
-                                    <td class="p-md text-body-sm">Ayer, 06:20 PM</td>
-                                    <td class="p-md font-medium">Estación Insurgentes - L1</td>
-                                    <td class="p-md"><span class="bg-surface-container-high text-primary px-sm py-xs rounded text-[12px] font-bold">VIAJE</span></td>
-                                    <td class="p-md text-right font-bold text-error">-$6.00</td>
-                                </tr>
-                                <tr class="hover:bg-surface-container-low transition-colors">
-                                    <td class="p-md text-body-sm">15 Oct, 11:30 AM</td>
-                                    <td class="p-md font-medium">Terminal Central</td>
-                                    <td class="p-md"><span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-[12px] font-bold">RECARGA</span></td>
-                                    <td class="p-md text-right font-bold text-secondary">+$100.00</td>
-                                </tr>
-                                <tr class="hover:bg-surface-container-low transition-colors">
-                                    <td class="p-md text-body-sm">14 Oct, 09:15 AM</td>
-                                    <td class="p-md font-medium">Estación Pino Suárez - L2</td>
-                                    <td class="p-md"><span class="bg-surface-container-high text-primary px-sm py-xs rounded text-[12px] font-bold">VIAJE</span></td>
-                                    <td class="p-md text-right font-bold text-error">-$6.00</td>
-                                </tr>
-                                <tr class="hover:bg-surface-container-low transition-colors">
-                                    <td class="p-md text-body-sm">14 Oct, 07:45 AM</td>
-                                    <td class="p-md font-medium">Línea 7 Bus - Reforma</td>
-                                    <td class="p-md"><span class="bg-surface-container-high text-primary px-sm py-xs rounded text-[12px] font-bold">VIAJE</span></td>
-                                    <td class="p-md text-right font-bold text-error">-$4.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
+            <!-- Componente del Historial de Transacciones -->
+            <livewire:tarjeta.hisotrial />
         </div>
     </main>
 
-    <footer class="w-full bg-surface-container border-t border-outline-variant">
-        <div class="max-w-container-max mx-auto py-md px-lg flex flex-col md:flex-row justify-between items-center gap-md">
-            <div class="flex flex-col items-center md:items-start gap-xs">
-                <span class="font-label-caps text-label-caps text-on-surface-variant">SISTEMA DE MOVILIDAD INTEGRADA</span>
-                <p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">© {{ date('Y') }} Transit Flow. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="fixed inset-0 z-[100] hidden" id="recharge-modal">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('recharge-modal')"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-lg">
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div class="p-lg bg-primary text-white flex justify-between items-center">
-                    <h3 class="font-headline-md">Recargar Saldo</h3>
-                    <button class="material-symbols-outlined" onclick="closeModal('recharge-modal')">close</button>
-                </div>
-                <div class="p-lg flex flex-col gap-lg">
-                    <div>
-                        <label class="font-label-caps text-label-caps block mb-xs text-on-surface-variant">SELECCIONA MONTO</label>
-                        <div class="grid grid-cols-3 gap-md">
-                            <button class="border border-outline p-md rounded-lg font-bold hover:bg-surface-container-low transition-colors focus:ring-2 focus:ring-primary">$20</button>
-                            <button class="border border-outline p-md rounded-lg font-bold hover:bg-surface-container-low transition-colors focus:ring-2 focus:ring-primary">$50</button>
-                            <button class="border border-primary bg-primary-fixed p-md rounded-lg font-bold text-primary">$100</button>
-                        </div>
-                    </div>
-                    <div class="space-y-sm">
-                        <label class="font-label-caps text-label-caps block text-on-surface-variant">OTRO MONTO</label>
-                        <input class="w-full border border-outline rounded-lg p-md focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="$ 0.00" type="number">
-                    </div>
-                    <button class="bg-primary text-white font-bold py-md rounded-lg shadow-sm active:scale-95 transition-transform">Confirmar Pago</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="fixed inset-0 z-[100] hidden" id="simulate-modal">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('simulate-modal')"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-lg">
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div class="p-lg bg-surface-container border-b border-outline-variant flex justify-between items-center">
-                    <h3 class="font-headline-md text-primary">Simular Viaje</h3>
-                    <button class="material-symbols-outlined text-on-surface-variant" onclick="closeModal('simulate-modal')">close</button>
-                </div>
-                <div class="p-lg flex flex-col gap-lg">
-                    <div class="flex items-center gap-md bg-surface-container-low p-md rounded-lg">
-                        <div class="h-10 w-10 bg-primary flex items-center justify-center text-white rounded-full">
-                            <span class="material-symbols-outlined">train</span>
-                        </div>
-                        <div>
-                            <p class="font-label-caps text-label-caps text-on-surface-variant">TARIFA ESTÁNDAR</p>
-                            <p class="font-numeric-display text-primary">$6.00 MXN</p>
-                        </div>
-                    </div>
-                    <div class="space-y-md">
-                        <div class="flex justify-between items-center text-body-sm">
-                            <span class="text-on-surface-variant">Saldo después del viaje:</span>
-                            <span class="font-bold text-error">$12.50</span>
-                        </div>
-                        <div class="bg-error-container/20 p-md rounded-lg border border-error/20 flex items-start gap-sm">
-                            <span class="material-symbols-outlined text-error text-[20px]">info</span>
-                            <p class="text-on-error-container text-body-sm font-medium">Atención: Tu saldo quedará por debajo del límite mínimo recomendado ($20.00) tras este viaje.</p>
-                        </div>
-                    </div>
-                    <button class="bg-primary text-white font-bold py-md rounded-lg active:scale-95 transition-transform" onclick="closeModal('simulate-modal')">Entendido</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         function openModal(id) {

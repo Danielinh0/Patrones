@@ -21,6 +21,7 @@ class TarjetaFactory
             $tarjeta = Tarjeta::create([
                 'saldo_actual' => $datosBase['saldo_inicial'] ?? 0,
                 'estado'       => 'Activa',
+                'tipo'         => strtoupper($tipo),
                 'id_titular'   => $datosBase['id_titular'],
             ]);
 
