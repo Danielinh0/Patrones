@@ -1,3 +1,8 @@
 <div>
-    <!-- It is never too late to be what you might have been. - George Eliot -->
+    <livewire:tarjeta.saldo>
+    <div class="botones">
+        <livewire:tarjeta.botones.pago>
+        <livewire:tarjeta.botones.recarga>
+    </div>
+    <livewire:tarjeta.historial>
 </div>
