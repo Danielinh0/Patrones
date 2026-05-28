@@ -23,20 +23,7 @@ class TarjetaAdultoMayor extends Model implements TarjetaInterface
     }
 
     //metodos de la interfaz TarjetaInterface
-    public function calcularTarifa(): float
-    {
-        // Implementación específica para tarjeta de estudiante
-        return 1.0; // Ejemplo de tarifa reducida
-    }
 
-     public function pagar(): float{
-        // Implementación del método pagar para tarjeta de estudiante
-        return $this->calcularTarifa(); // Paga la tarifa calculada
-     }
-    public function recargar(): float{
-        // Implementación del método recargar para tarjeta de estudiante
-        return 10.0; // Ejemplo de recarga mínima
-    }
     public function getTipo(): string{
         return 'ADULTO_MAYOR';
     }
