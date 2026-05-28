@@ -26,7 +26,7 @@
                 <h1 class="text-5xl font-bold text-azul-fuerte">Simplificando tu trayecto diario</h1>
                 
                 <span class="w-1/2">
-                    <h3 class="text-xl text-[#535a59] text-center text-pretty">
+                    <h3 class="text-xl text-texto text-center text-pretty">
                         Gestiona tus tarjetas de transporte de manera eficiente y segura. Recarga, consulta y viaja sin 
                         interrupciones con el sistema de movilidad integrada de Transit Flow.
                     </h3>
@@ -37,25 +37,51 @@
             <section class="h-2/3 flex flex-col bg-[#f9f9ff] gap-12 px-12 py-8">
                 
                 {{-- cards informativas --}}
-                <div class="w-full h-1/2 flex gap-5 justify-between" >
+                <div class="w-full h-1/2 flex gap-5 justify-between px-8" >
 
                     {{-- card 1 --}}
-                    <div class="w-1/2 h-full bg-white border border-zinc-300 py-2 px-12 flex gap-4 items-center">
+                    <div class="w-[48%] h-full bg-white border border-zinc-300 py-2 px-12 flex gap-8 items-center">
                         
                         <div class="bg-azul-fuerte rounded-xl p-6">
                             <flux:icon.wallet-minimal class="size-17 text-white"/>
                         </div>
                         
-                        <div class="flex flex-col gap-5" >
-
+                        <div class="flex flex-col gap-4" >
+                            <flux:heading class="text-3xl! font-bold! text-azul-fuerte!">Tramita tu tarjeta</flux:heading>
+                            
+                            <flux:text class="text-texto! text-lg text-balance!">Obtén tu pase de transporte digital o solicita uno físico en minutos. 
+                                Configuración instantánea para que empieces a moverte hoy mismo.
+                            </flux:text>
+                            
+                            <flux:button class="text-lg! w-1/3! p-0! justify-start! bg-transparent!
+                             text-azul-fuerte! border-none! shadow-none!
+                             hover:underline hover:decoration-solid hover:underline-offset-4 hover:decoration-azul-fuerte hover:decoration-1
+                             hover:bg-transparent! text-start! transition duration-400 ease-out hover:translate-x-1/10"
+                              href="{{ route('create') }}"  icon:trailing="arrow-right"
+                            >
+                                SOLICITA AHORA
+                            </flux:button>
                         </div>
 
                     </div>
 
                     {{-- card 2 --}}
-                    <div>
+                     <div class="w-1/2 h-full bg-white border border-zinc-300 py-2 px-12 flex gap-10 items-center">
+                        
+                        <div class="bg-[#006d40] rounded-xl p-6">
+                            <flux:icon.wallet-minimal class="size-17 text-white"/>
+                        </div>
+                        
+                        <div class="flex flex-col gap-4" >
+                            <flux:heading class="text-3xl! font-bold! text-azul-fuerte!">Consulta tu saldo o informacion</flux:heading>
+                            
+                                <flux:text class="text-texto! text-lg text-balance!">Revisa tu saldo disponible, historial de viajes y facturación de forma transparente. 
+                                    Mantén el control total de tus gastos de transporte.
+                            </flux:text>
+                        </div>
 
                     </div>
+
                 </div>
 
 

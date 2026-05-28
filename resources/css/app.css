@@ -35,6 +35,8 @@
     --color-azul_rebajado: #B2D4F9;
     
     --color-verde_texto: #019031;
+
+    --color-texto:#535a59; 
 }
 
 @layer theme {
