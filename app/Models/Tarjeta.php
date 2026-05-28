@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-#[Fillable(['saldo_actual', 'estado', 'id_titular'])]
+#[Fillable(['saldo_actual', 'estado', 'tipo', 'id_titular'])]
 class Tarjeta extends Model
 {
     use HasFactory;

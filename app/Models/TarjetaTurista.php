@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Contracts\TarjetaInterface;
+
 #[Fillable(['id_tarjeta_turista', 'fecha_vigencia_turista'])]
-class TarjetaTurista extends Model
+class TarjetaTurista extends Model implements TarjetaInterface
 {
     use HasFactory;
     protected $table = 'tarjeta_turista';
@@ -17,5 +19,24 @@ class TarjetaTurista extends Model
     public function tarjeta()
     {
         return $this->belongsTo(Tarjeta::class, 'id_tarjeta_turista', 'id_tarjeta');
+    }
+
+    //metodos de la interfaz TarjetaInterface
+    public function calcularTarifa(): float
+    {
+        // Implementación específica para tarjeta de estudiante
+        return 1.0; // Ejemplo de tarifa reducida
+    }
+
+     public function pagar(): float{
+        // Implementación del método pagar para tarjeta de estudiante
+        return $this->calcularTarifa(); // Paga la tarifa calculada
+     }
+    public function recargar(): float{
+        // Implementación del método recargar para tarjeta de estudiante
+        return 10.0; // Ejemplo de recarga mínima
+    }
+    public function getTipo(): string{
+        return 'TURISTA';
     }
 }

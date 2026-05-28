@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 Use Illuminate\Foundation\Auth\User as Authenticatable;
 
-#[Fillable(['nombre', 'edad'])]
+#[Fillable(['nombre', 'edad','curp'])]
 class Titular extends Model
 {
     use HasFactory;

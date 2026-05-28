@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_tarjeta');
             
             $table->integer('saldo_actual')->default(0);
+            $table->enum('tipo', ['GENERAL', 'ESTUDIANTE', 'ADULTO_MAYOR', 'TURISTA']);
             $table->string('estado');
 
             $table->unsignedBigInteger('id_titular');
