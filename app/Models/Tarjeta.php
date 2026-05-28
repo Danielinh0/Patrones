@@ -2,10 +2,20 @@
 
 namespace App\Models;
 
+use App\Contracts\States\Tarjetas\TarjetaStateInterface;
+use App\States\Tarjetas\ActivaTarjetaState;
+use App\States\Tarjetas\BloqueadaTarjetaState;
+use App\States\Tarjetas\VencidaTarjetaState;
+use App\Strategies\Tarifas\TarifaAdultoMayorStrategy;
+use App\Strategies\Tarifas\TarifaEstudianteStrategy;
+use App\Strategies\Tarifas\TarifaGeneralStrategy;
+use App\Strategies\Tarifas\TarifaTuristaStrategy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Strategies\Tarifas;
+use App\Contracts\Strategies\Tarifas\TarifaStrategyInterface;
 
 
 #[Fillable(['saldo_actual', 'estado', 'tipo', 'id_titular'])]
@@ -44,5 +54,33 @@ class Tarjeta extends Model
     public function tarjetaTurista()
     {
         return $this->hasOne(TarjetaTurista::class, 'id_tarjeta_turista', 'id_tarjeta');
+    }
+
+    public function getTarifaStrategy(): TarifaStrategyInterface
+    {
+        return match ($this->tipo) {
+            'estudiante' => new TarifaEstudianteStrategy() ,
+            'adulto_mayor' => new TarifaAdultoMayorStrategy(),
+            'turista' => new TarifaTuristaStrategy(),
+            default => new TarifaGeneralStrategy(),
+        };
+    }
+
+    public function getEstado() :TarjetaStateInterface
+    {
+        return match ($this->estado) {
+            'bloqueada' => new BloqueadaTarjetaState(),
+            'vencida' => new VencidaTarjetaState(),
+            default => new ActivaTarjetaState(),
+        };
+    }
+
+    public function pagarViaje(float $monto):void{
+        $this->getEstado()->pagar($this,$monto);
+    }
+
+    public function recargarSaldo(Float $monto):void
+    {
+        $this->getEstado()->recargar($this,$monto);
     }
 }

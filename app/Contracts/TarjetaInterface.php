@@ -2,10 +2,9 @@
 
 namespace App\Contracts;
 
+use App\Models\Tarjeta;
+
 interface TarjetaInterface
 {
-    public function calcularTarifa(): float;
-    public function pagar(): float;
-    public function recargar(): float;
     public function getTipo(): string;
 }

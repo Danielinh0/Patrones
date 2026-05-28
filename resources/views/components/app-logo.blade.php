@@ -9,9 +9,9 @@
         </x-slot>
     </flux:sidebar.brand>
 @else
-    <flux:brand name="Laravel Starter Kit" {{ $attributes }}>
-        <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
+    <flux:brand class="text-3xl! text-azul_menu!" name="Transit Flow" {{ $attributes }}>
+        {{-- <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
             <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-        </x-slot>
+        </x-slot> --}}
     </flux:brand>
 @endif
