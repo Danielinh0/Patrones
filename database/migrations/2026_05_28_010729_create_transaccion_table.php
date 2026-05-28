@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('id_tarjeta')->references('id_tarjeta')->on('tarjeta');
             
             $table->unsignedBigInteger('id_ruta')->nullable();
-            $table->foreign('id_ruta')->references('id_ruta')->on('tipo_ruta');
+            $table->foreign('id_ruta')->references('id_ruta')->on('ruta');
 
             $table->timestamps();
         });
