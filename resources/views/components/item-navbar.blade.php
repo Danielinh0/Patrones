@@ -14,7 +14,7 @@ $isCurrent = request()->routeIs($ruta);
     class="h-8.5 border border-transparent transition duration-300 ease-in-out mr-2.5
           hover:bg-azul_rebajado! hover:translate-y-2 hover:scale-105 hover:!text-azul_menu
            dark:hover:bg-white/7! dark:hover:!text-white
-           data-current:bg-azul_menu! data-current:!text-white data-current:border-zinc-200!
+           data-current:bg-azul-fuerte! data-current:!text-white data-current:border-zinc-200!
            hover:data-current:!text-white
            [&_[data-flux-icon]]:!size-5"
     :icon="$icon"
