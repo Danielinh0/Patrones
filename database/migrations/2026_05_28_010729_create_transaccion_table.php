@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaccion', function (Blueprint $table) {
-            $table->id('id_transaccion')->primary();
+            $table->id('id_transaccion');
             $table->integer('monto');
             $table->date('fecha');
             $table->string('tipo');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_tarjeta');
             $table->foreign('id_tarjeta')->references('id_tarjeta')->on('tarjeta');
             
-            $table->unsignedBigInteger('id_ruta');
+            $table->unsignedBigInteger('id_ruta')->nullable();
             $table->foreign('id_ruta')->references('id_ruta')->on('tipo_ruta');
 
             $table->timestamps();
