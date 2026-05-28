@@ -1,3 +1,4 @@
-<div>
-    <!-- People find pleasure in different ways. I find it in keeping my mind clear. - Marcus Aurelius -->
-</div>
+<x-layouts::app :title="__('Create')">
+    El create es una vista de prueba para mostrar como se pueden crear nuevas vistas y rutas en el proyecto. 
+    Esta vista no tiene ninguna funcionalidad, solo muestra un mensaje de bienvenida.
+</x-layouts::app>

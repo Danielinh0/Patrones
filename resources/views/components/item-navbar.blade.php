@@ -1,0 +1,42 @@
+
+@props([
+'icon' => '',
+'ruta' => '',
+'texto' => '',
+'disabled' => false,
+])
+
+@php
+$isCurrent = request()->routeIs($ruta);
+@endphp
+
+<flux:navbar.item
+    class="h-8.5 border border-transparent transition duration-300 ease-in-out mr-2.5
+          hover:bg-azul_rebajado! hover:translate-y-2 hover:scale-105 hover:!text-azul_menu
+           dark:hover:bg-white/7! dark:hover:!text-white
+           data-current:bg-azul_menu! data-current:!text-white data-current:border-zinc-200!
+           hover:data-current:!text-white
+           [&_[data-flux-icon]]:!size-5"
+    :icon="$icon"
+    :href="$disabled ? '#' : route($ruta)"
+    :current="$isCurrent"
+    :disabled="$disabled"
+    :wire:navigate="!$isCurrent">
+    {{ __($texto) }}
+</flux:sidebar.item>
+
+
+{{-- <flux:sidebar.item
+    class="h-8.5 border border-transparent transition duration-300 ease-in-out
+           hover:bg-azul_rebajado! hover:translate-y-2.5 hover:!text-azul_menu
+           dark:hover:bg-white/7! dark:hover:!text-white
+           data-current:bg-azul_menu! data-current:!text-white data-current:border-zinc-200!
+           hover:data-current:!text-white
+           [&_[data-flux-icon]]:!size-5"
+    :icon="$icon"
+    :href="$disabled ? '#' : route($ruta)"
+    :current="$isCurrent"
+    :disabled="$disabled"
+    :wire:navigate="!$isCurrent">
+    {{ __($texto) }}
+</flux:sidebar.item> --}}
