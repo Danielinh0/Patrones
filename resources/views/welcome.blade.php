@@ -40,7 +40,9 @@
                 <div class="w-full h-1/2 flex gap-5 justify-between px-8" >
 
                     {{-- card 1 --}}
-                    <div class="w-[48%] h-full bg-white border border-zinc-300 py-2 px-12 flex gap-8 items-center">
+                    <div class="w-[48%] h-full bg-white border border-zinc-300 py-2 px-12 flex gap-8 items-center
+                    transition duration-400 ease-out hover:shadow-md hover:shadow-azul-fuerte/20 hover:-translate-y-3
+                    ">
                         
                         <div class="bg-azul-fuerte rounded-xl p-6">
                             <flux:icon.wallet-minimal class="size-17 text-white"/>
@@ -59,39 +61,99 @@
                              hover:bg-transparent! text-start! transition duration-400 ease-out hover:translate-x-1/10"
                               href="{{ route('create') }}"  icon:trailing="arrow-right"
                             >
-                                SOLICITA AHORA
+                                Solicita ahora
                             </flux:button>
                         </div>
 
                     </div>
 
                     {{-- card 2 --}}
-                     <div class="w-1/2 h-full bg-white border border-zinc-300 py-2 px-12 flex gap-10 items-center">
+                    <div class="w-[48%] h-full bg-white border border-zinc-300 py-2 px-12 flex gap-8 items-center
+                    transition duration-400 ease-out hover:shadow-md hover:shadow-azul-fuerte/20 hover:-translate-y-3">
                         
                         <div class="bg-[#006d40] rounded-xl p-6">
                             <flux:icon.wallet-minimal class="size-17 text-white"/>
                         </div>
                         
                         <div class="flex flex-col gap-4" >
-                            <flux:heading class="text-3xl! font-bold! text-azul-fuerte!">Consulta tu saldo o informacion</flux:heading>
+                            <flux:heading class="text-3xl! font-bold! text-azul-fuerte!">Consulta tu saldo o información</flux:heading>
                             
-                                <flux:text class="text-texto! text-lg text-balance!">Revisa tu saldo disponible, historial de viajes y facturación de forma transparente. 
-                                    Mantén el control total de tus gastos de transporte.
+                            <flux:text class="text-texto! text-lg text-balance!">Revisa tu saldo disponible, historial de viajes y facturación de forma transparente. 
+                                Mantén el control total de tus gastos de transporte.
                             </flux:text>
+                            
+                            <flux:button class="text-lg! w-1/3! p-0! justify-start! bg-transparent!
+                             text-verde_texto! border-none! shadow-none!
+                             hover:underline hover:decoration-solid hover:underline-offset-4 hover:decoration-verde_texto hover:decoration-1
+                             hover:bg-transparent! text-start! transition duration-400 ease-out hover:translate-x-1/10"
+                              href="{{ route('show') }}"  icon:trailing="arrow-right"
+                            >
+                                Ver mi cuenta
+                            </flux:button>
                         </div>
 
-                    </div>
-
+                    </div> 
                 </div>
 
-
-
                 {{-- datos de la pagina --}}
-                <div class="w-full h-1/2" >
+                <div class="w-full h-1/2 flex gap-8 px-8" >
+                    
+                    <div class="flex flex-col gap-4 w-1/3 h-[80%] bg-[#f0f3ff] border border-zinc-300 px-12 items-start justify-center">
+                        
+                        <div class="inline-flex gap-3 items-center">
+                            <flux:icon.gauge class="size-9 text-azul-fuerte"/>
+                            <flux:heading class="text-xl! font-semibold! text-azul-fuerte!">Eficiencia Total</flux:heading>
+                        </div>
+                        
+                        <div>
+                            <flux:text class="text-texto! text-lg text-balance!">
+                                Acceso inmediato a validadores y torniquetes con tecnología NFC de última generación.
+                            </flux:text>
+                        </div>
+                    </div>
+                    
+                    {{-- card 2 mini --}}
+                    <div class="flex flex-col gap-4 w-1/3 h-[80%] bg-[#f0f3ff] border border-zinc-300 px-12 items-start justify-center">
+                        
+                        <div class="inline-flex gap-3 items-center">
+                            <flux:icon.brick-wall-shield class="size-9 text-azul-fuerte"/>
+                            <flux:heading class="text-xl! font-semibold! text-azul-fuerte!">Seguridad Cifrada</flux:heading>
+                        </div>
+                        
+                        <div>
+                            <flux:text class="text-texto! text-lg text-balance!">
+                                Tus transacciones y datos personales están protegidos por estándares bancarios internacionales.
+                            </flux:text>
+                        </div>
+                    </div>
 
+                    <div class="flex flex-col gap-4 w-1/3 h-[80%] bg-[#f0f3ff] border border-zinc-300 px-12 items-start justify-center">
+                        
+                        <div class="inline-flex gap-3 items-center">
+                            <flux:icon.leaf class="size-9 text-azul-fuerte"/>
+                            <flux:heading class="text-xl! font-semibold! text-azul-fuerte!">Sostenibilidad</flux:heading>
+                        </div>
+                        
+                        <div>
+                            <flux:text class="text-texto! text-lg text-balance!">
+                                Reduce el uso de plásticos con nuestras tarjetas digitales integradas en tu dispositivo móvil.
+                            </flux:text>
+                        </div>
+                    </div>
+                  
                 </div>
 
             </section>
+
+            <footer class="flex flex-col h-2/3">
+                <section class="h-64 md:h-full flex bg-center bg-cover bg-no-repeat" style="background-image: url('{{ asset('img/linea-del-metro-mediotiempo-ia.jpg') }}')">
+
+                </section>
+
+                <section>
+
+                </section>
+            </footer>
 
         </body>
     </x-layouts::app>
