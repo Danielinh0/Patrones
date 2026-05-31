@@ -122,16 +122,7 @@
     </header>
 
     <main class="flex-grow pt-24 pb-xl px-gutter max-w-container-max mx-auto w-full">
-        <div class="bg-white border border-outline-variant rounded-xl shadow-sm p-xl flex flex-col items-center justify-center gap-md text-center min-h-[400px]">
-            <span class="material-symbols-outlined text-[64px] text-primary">add_card</span>
-            <h2 class="font-headline-md text-headline-md text-primary">Emitir Nueva Tarjeta</h2>
-            <p class="font-body-sm text-on-surface-variant max-w-md">
-                El formulario para emitir tarjetas estará disponible próximamente. Mientras tanto, puedes consultar el saldo de las tarjetas ya existentes.
-            </p>
-            <a href="{{ route('show') }}" class="mt-md bg-primary text-white px-lg py-md rounded-lg font-medium hover:shadow-md transition-all active:scale-95">
-                Ver tarjetas existentes
-            </a>
-        </div>
+        <livewire:tarjeta.emitir />
     </main>
 
     <footer class="w-full bg-surface-container border-t border-outline-variant">
